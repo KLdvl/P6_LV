@@ -85,7 +85,7 @@ exports.likeSauce = (req, res, next) => {
             }
             //like = -1
             if (!sauce.usersDisliked.includes(req.body.userId) && req.body.like === -1) {
-                console.log(" userId est dans UsersDisliked et dislikes +1")
+                console.log(" userId n'est pas dans UsersDisliked et dislikes +1")
                 //mise à jour de la BDD
                 Sauce.updateOne(
                     {_id: req.params.id},

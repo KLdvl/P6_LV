@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
-
-const sauceSchema = ({
+const mongooseErrorHandler = require('mongoose-validation-error-message-handler');
+const sauceSchema = mongoose.Schema({
   userId: { type: String, required: true},
   name: {type: String, required: true},
   manufacturer: {type: String, required: true},
@@ -13,5 +13,5 @@ const sauceSchema = ({
   usersLiked: {type: [String]},
   usersDisliked: {type: [String]}
 });
-
+sauceSchema.plugin(mongooseErrorHandler);
 module.exports = mongoose.model('Sauce', sauceSchema);
