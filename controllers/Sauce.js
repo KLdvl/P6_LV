@@ -3,22 +3,22 @@ const fs = require('fs');
 
 exports.createSauce = (req, res, next) => {
     const sauceObject = JSON.parse(req.body.sauce)
-    delete sauceObject._id;
+    delete sauceObject._id; //retire l'id généré par la base de données
     const sauce = new Sauce({
         ...sauceObject,
         imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
     });
-    sauce.save()
+    sauce.save() //cette methode enregistre dans la BDD
         .then(() => res.status(201).json({message: 'sauce enregistrée !'}))
         .catch(error => res.status(400).json({error}));
 };
 
 exports.modifySauce = (req, res, next) => {
-    const sauceObject = req.file ?
+    const sauceObject = req.file ? // s'il y a un req.file c'est qu'il y a ajout d'un fichier image
         {
             ...JSON.parse(req.body.sauce),
             imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
-        } : {...req.body};
+        } : {...req.body}; //ici le cas où il n'y a pas d'ajout d'image
     Sauce.updateOne({_id: req.params.id}, {...sauceObject, _id: req.params.id})
         .then(() => res.status(200).json({message: 'Objet modifié !'}))
         .catch(error => res.status(400).json({error}));
@@ -27,8 +27,8 @@ exports.modifySauce = (req, res, next) => {
 exports.deleteSauce = (req, res, next) => {
     Sauce.findOne({_id: req.params.id})
         .then(sauce => {
-            const filename = sauce.imageUrl.split('/images/')[1];
-            fs.unlink(`images/${filename}`, () => {
+            const filename = sauce.imageUrl.split('/images/')[1]; //Extrait le nom du fichier à supprimer
+            fs.unlink(`images/${filename}`, () => {   //supression grace à fs.unlink
                 Sauce.deleteOne({_id: req.params.id})
                     .then(() => res.status(200).json({message: 'Objet supprimé !'}))
                     .catch(error => res.status(400).json({error}));

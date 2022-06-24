@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
 const mongooseErrorHandler = require('mongoose-validation-error-message-handler');
+
+//creation du schema mongoose pour les sauces
 const sauceSchema = mongoose.Schema({
   userId: { type: String, required: true},
   name: {type: String, required: true},
@@ -14,4 +16,6 @@ const sauceSchema = mongoose.Schema({
   usersDisliked: {type: [String]}
 });
 sauceSchema.plugin(mongooseErrorHandler);
+
+//model qui permet d'inserer des données dans mongoDB selon le schema pour les sauces
 module.exports = mongoose.model('Sauce', sauceSchema);
