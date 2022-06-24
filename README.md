@@ -25,8 +25,9 @@ L’application doit répondre à des objectifs de sécurité:
 - Les versions les plus récentes des logiciels sont utilisées avec des correctifs de sécurité actualisés.
 - Le contenu du dossier images ne doit pas être téléchargé sur GitHub
 
-_Les étapes clés du projet_: https://s3.eu-west-1.amazonaws.com/course.oc-static.com/projects/DWJ_FR_P6/Guide+E%CC%81tapes+Cle%CC%81s_DW_P6.pdf
-_Les recommandations techniques_: https://s3.eu-west-1.amazonaws.com/course.oc-static.com/projects/DWJ_FR_P6/Requirements_DW_P6.pdf
+Les étapes clés du projet sont [ici] (https://s3.eu-west-1.amazonaws.com/course.oc-static.com/projects/DWJ_FR_P6/Guide+E%CC%81tapes+Cle%CC%81s_DW_P6.pdf)
+
+Les recommandations techniques sont [par là] (https://s3.eu-west-1.amazonaws.com/course.oc-static.com/projects/DWJ_FR_P6/Requirements_DW_P6.pdf)
 
 ------
 
@@ -39,10 +40,10 @@ Retirez le code de l'application _front-end_ du repository du projet et suivez l
 5. Exécutez le back-end sur http://localhost:3000 seulement
 
 Pour faire tourner le _backend_:
-•	Ouvrir le terminal sur ce dossier.
-•	Pour utiliser le serveur, chargez le package nodemon : npm install -g nodemon.
-•	Puis lancez le serveur: nodemon server.
-•	Ouvrir http://localhost:4200 dans votre navigateur.
+1.	Ouvrir le terminal sur ce dossier.
+2.	Pour utiliser le serveur, chargez le package nodemon : npm install -g nodemon.
+3.	Puis lancez le serveur: nodemon server.
+4.	Ouvrir http://localhost:4200 dans votre navigateur.
 
 Il ne vous reste qu’à créer un compte utilisateur en cliquant sur SIGN UP.
 
